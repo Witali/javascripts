@@ -1,4 +1,4 @@
-
+// бинарный поиск
 
 function randArray(len)
 {
