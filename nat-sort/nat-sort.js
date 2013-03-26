@@ -1,17 +1,17 @@
-/*  Натуральная сортировка
+/*  РќР°С‚СѓСЂР°Р»СЊРЅР°СЏ СЃРѕСЂС‚РёСЂРѕРІРєР°
 	
-	при обычной сортировке
+	РїСЂРё РѕР±С‹С‡РЅРѕР№ СЃРѕСЂС‚РёСЂРѕРІРєРµ
 		abc1
 		abc100
 		abc5
 		
-	при натуральной
+	РїСЂРё РЅР°С‚СѓСЂР°Р»СЊРЅРѕР№
 		abc1
 		abc5
 		abc100
 */
 
-// разбивает строку на группы букв и цифр, например 'abc100' -> ['abc', 100]
+// СЂР°Р·Р±РёРІР°РµС‚ СЃС‚СЂРѕРєСѓ РЅР° РіСЂСѓРїРїС‹ Р±СѓРєРІ Рё С†РёС„СЂ, РЅР°РїСЂРёРјРµСЂ 'abc100' -> ['abc', 100]
 function preapareString(str){
 
 	var patt1=/(\d+)|(\D+)/gi;
@@ -23,7 +23,7 @@ function preapareString(str){
 		if(!match) break;
 		if(typeof match[1] !== 'undefined')
 		{
-			prepared.push(+match[1]); // сохраняем как число
+			prepared.push(+match[1]); // СЃРѕС…СЂР°РЅСЏРµРј РєР°Рє С‡РёСЃР»Рѕ
 		}
 		else
 		{
@@ -35,7 +35,7 @@ function preapareString(str){
 }
 
 
-// сравнивает два массива 
+// СЃСЂР°РІРЅРёРІР°РµС‚ РґРІР° РјР°СЃСЃРёРІР° 
 function compareArrays(arr1, arr2){
 	var n1 = arr1.length,
 		n2 = arr2.length,
@@ -73,11 +73,11 @@ function compareArrays(arr1, arr2){
 		}
 	}
 	
-	// если массивы совпадают сравниваем длину
+	// РµСЃР»Рё РјР°СЃСЃРёРІС‹ СЃРѕРІРїР°РґР°СЋС‚ СЃСЂР°РІРЅРёРІР°РµРј РґР»РёРЅСѓ
 	return n1 > n2;
 }
 
-// функция сравнения
+// С„СѓРЅРєС†РёСЏ СЃСЂР°РІРЅРµРЅРёСЏ
 function compareNat(str1, str2){
 	return compareArrays(preapareString(str1), preapareString(str2));
 }

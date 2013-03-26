@@ -1,4 +1,4 @@
-// преобразование из camelCase в dashed-case и обратно
+// РїСЂРµРѕР±СЂР°Р·РѕРІР°РЅРёРµ РёР· camelCase РІ dashed-case Рё РѕР±СЂР°С‚РЅРѕ
 
 
 function dasherize(str){

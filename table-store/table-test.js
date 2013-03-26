@@ -1,17 +1,17 @@
 
 var data = [
-	['id', 'name', 'age'], // Первая строка - имена полей
-	['1', 'вася', '20'], // Далее - данные
-	['2', 'петя', '25'],
-	['3', 'дима', '30']
+	['id', 'name', 'age'], // РџРµСЂРІР°СЏ СЃС‚СЂРѕРєР° - РёРјРµРЅР° РїРѕР»РµР№
+	['1', 'РІР°СЃСЏ', '20'], // Р”Р°Р»РµРµ - РґР°РЅРЅС‹Рµ
+	['2', 'РїРµС‚СЏ', '25'],
+	['3', 'РґРёРјР°', '30']
 	
 ];
 
 var humans = new Table(data);
 
 console.log(humans.get(1, 0));
-humans.setNameField(1, 'Дормидонт');
+humans.setNameField(1, 'Р”РѕСЂРјРёРґРѕРЅС‚');
 console.log(humans.getNameField(1));
 
-humans.setRowObject(1, {id:'1', name:'Денис'});
+humans.setRowObject(1, {id:'1', name:'Р”РµРЅРёСЃ'});
 console.log(humans.getRowArray(1));

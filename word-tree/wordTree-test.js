@@ -1,4 +1,4 @@
-// тесты
+// С‚РµСЃС‚С‹
 WordTree.prototype.show = function(){
     console.log(this.root);
 };

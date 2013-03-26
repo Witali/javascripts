@@ -15,12 +15,12 @@ var dog = {
 }
 
 evman.on(cat, 'dog.say', function(sound){
-    if(sound === '„‡‚')
+    if(sound === '–≥–∞–≤')
     {
         this.jump();
     }
 });
 
 
-dog.say('„‡‚');
+dog.say('–≥–∞–≤');
 

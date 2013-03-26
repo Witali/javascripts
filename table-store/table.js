@@ -1,10 +1,7 @@
 /*
-	Чтобы уменьшить потребление памяти и снизить трафик, лучше использовать 
-	массивы вместо объектов, не так наглядно, но экономим на ключах.
+	Р§С‚РѕР±С‹ СѓРјРµРЅСЊС€РёС‚СЊ РїРѕС‚СЂРµР±Р»РµРЅРёРµ РїР°РјСЏС‚Рё Рё СЃРЅРёР·РёС‚СЊ С‚СЂР°С„РёРє, Р»СѓС‡С€Рµ РёСЃРїРѕР»СЊР·РѕРІР°С‚СЊ 
+	РјР°СЃСЃРёРІС‹ РІРјРµСЃС‚Рѕ РѕР±СЉРµРєС‚РѕРІ, РЅРµ С‚Р°Рє РЅР°РіР»СЏРґРЅРѕ, РЅРѕ СЌРєРѕРЅРѕРјРёРј РЅР° РєР»СЋС‡Р°С….
 */
-
-
-
 
 function Table(){
 	this.init.apply(this, arguments)
@@ -61,8 +58,8 @@ Table.prototype = {
 	},	
 	
 
-	// Получаем индекс строки из имени
-	// если такого имени нет, то считаем имя индексом
+	// РџРѕР»СѓС‡Р°РµРј РёРЅРґРµРєСЃ СЃС‚СЂРѕРєРё РёР· РёРјРµРЅРё
+	// РµСЃР»Рё С‚Р°РєРѕРіРѕ РёРјРµРЅРё РЅРµС‚, С‚Рѕ СЃС‡РёС‚Р°РµРј РёРјСЏ РёРЅРґРµРєСЃРѕРј
 	getFieldIndex: function(name){
 		return this.indices.hasOwnProperty(name) ? this.indices[name] : name;
 	},
@@ -71,7 +68,7 @@ Table.prototype = {
 		return this.names[idx];
 	},
 
-	// Получаем значение поля по номеру строки и имени
+	// РџРѕР»СѓС‡Р°РµРј Р·РЅР°С‡РµРЅРёРµ РїРѕР»СЏ РїРѕ РЅРѕРјРµСЂСѓ СЃС‚СЂРѕРєРё Рё РёРјРµРЅРё
 	get: function(row, name){
 		var idx = this.getFieldIndex(name);
 		return this.data[row][idx];
@@ -82,8 +79,8 @@ Table.prototype = {
 		this.data[row][idx] = value;
 	},
 	
-	// получаем запись с полем, равным значению val
-	findIndicesBy: (function(){ // создаем замыкание для хранения кэша
+	// РїРѕР»СѓС‡Р°РµРј Р·Р°РїРёСЃСЊ СЃ РїРѕР»РµРј, СЂР°РІРЅС‹Рј Р·РЅР°С‡РµРЅРёСЋ val
+	findIndicesBy: (function(){ // СЃРѕР·РґР°РµРј Р·Р°РјС‹РєР°РЅРёРµ РґР»СЏ С…СЂР°РЅРµРЅРёСЏ РєСЌС€Р°
 		
 		var cache = {
 			// name: { val1: [idx1], val2:[idx2], ...}
@@ -93,7 +90,7 @@ Table.prototype = {
 		return function(name, val){
 			val = val.toString();
 			
-			if(!cache.hasOwnProterty(name))
+			if(!cache.hasOwnProperty(name))
 			{
 				var section = {};
 				
@@ -115,12 +112,12 @@ Table.prototype = {
 		}
 	})(),
 	
-	// Получаем строку таблицы в виде массива по индексу
+	// РџРѕР»СѓС‡Р°РµРј СЃС‚СЂРѕРєСѓ С‚Р°Р±Р»РёС†С‹ РІ РІРёРґРµ РјР°СЃСЃРёРІР° РїРѕ РёРЅРґРµРєСЃСѓ
 	getRowArray: function(rowIndex){
 		return this.data[rowIndex];
 	},
 
-	// Получаем строку таблицы в виде объекта по индексу
+	// РџРѕР»СѓС‡Р°РµРј СЃС‚СЂРѕРєСѓ С‚Р°Р±Р»РёС†С‹ РІ РІРёРґРµ РѕР±СЉРµРєС‚Р° РїРѕ РёРЅРґРµРєСЃСѓ
 	getRowObject: function(rowIndex){
 		var obj = {};
 		for(var names=this.names, name, data = this.data[rowIndex], i = 0, n = names.length; i < n; ++i)
@@ -165,7 +162,7 @@ Table.prototype = {
 	
 	},
 	
-	// создаем функции для доступа к данным
+	// СЃРѕР·РґР°РµРј С„СѓРЅРєС†РёРё РґР»СЏ РґРѕСЃС‚СѓРїР° Рє РґР°РЅРЅС‹Рј
 	createMethods: function(){
 		
 		for(var names=this.names, name, nameUpper, i=0, n = names.length; i<n; ++i)

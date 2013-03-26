@@ -1,5 +1,5 @@
-// Сравнение объектов
-// без прототипов
+// РЎСЂР°РІРЅРµРЅРёРµ РѕР±СЉРµРєС‚РѕРІ
+// Р±РµР· РїСЂРѕС‚РѕС‚РёРїРѕРІ
 function diffObjects(obj1, obj2)
 {
 	if(typeof obj2 != 'object' || typeof obj1 != 'object' )
@@ -55,10 +55,10 @@ function diffObjects(obj1, obj2)
 	
 }
 
-// Сравнение объектов
-// без прототипов
-// возвращает только измененные и добавленные поля
-// null - если член объекта удален
+// РЎСЂР°РІРЅРµРЅРёРµ РѕР±СЉРµРєС‚РѕРІ
+// Р±РµР· РїСЂРѕС‚РѕС‚РёРїРѕРІ
+// РІРѕР·РІСЂР°С‰Р°РµС‚ С‚РѕР»СЊРєРѕ РёР·РјРµРЅРµРЅРЅС‹Рµ Рё РґРѕР±Р°РІР»РµРЅРЅС‹Рµ РїРѕР»СЏ
+// null - РµСЃР»Рё С‡Р»РµРЅ РѕР±СЉРµРєС‚Р° СѓРґР°Р»РµРЅ
 function diffObjects2(obj1, obj2)
 {
 	if(typeof obj2 != 'object' || typeof obj1 != 'object' )
@@ -102,9 +102,9 @@ function diffObjects2(obj1, obj2)
 
 }
 
-/* позволяет ждать несколько событий
+/* РїРѕР·РІРѕР»СЏРµС‚ Р¶РґР°С‚СЊ РЅРµСЃРєРѕР»СЊРєРѕ СЃРѕР±С‹С‚РёР№
  *
- * использование
+ * РёСЃРїРѕР»СЊР·РѕРІР°РЅРёРµ
  * var callback = function(){...};
  *
  * $.ajax({
@@ -128,7 +128,7 @@ Function.prototype.addHandler = function(handler)
 		sender = function(){
 			if(handler)
 			{
-				handler.apply(this, arguments); // вызываем обработчик текущего события
+				handler.apply(this, arguments); // РІС‹Р·С‹РІР°РµРј РѕР±СЂР°Р±РѕС‚С‡РёРє С‚РµРєСѓС‰РµРіРѕ СЃРѕР±С‹С‚РёСЏ
 			}
 
 			callback.signals[index] = true;
@@ -147,14 +147,14 @@ Function.prototype.addHandler = function(handler)
 	return sender;
 };
 
-// вставка мягкого переноса &shy;
+// РІСЃС‚Р°РІРєР° РјСЏРіРєРѕРіРѕ РїРµСЂРµРЅРѕСЃР° &shy;
 String.prototype.splitLongWords = function()
 {
 	var text = this;
-	var RusA = "[абвгдеёжзийклмнопрстуфхцчшщъыьэюяa-z]";
-	var RusV = "[аеёиоуыэюяeyuioaj]";
-	var RusN = "[бвгджзклмнпрстфхцчшщqwrtpsdfghklzxcvbnm]";
-	var RusX = "[йъь]";
+	var RusA = "[Р°Р±РІРіРґРµС‘Р¶Р·РёР№РєР»РјРЅРѕРїСЂСЃС‚СѓС„С…С†С‡С€С‰СЉС‹СЊСЌСЋСЏa-z]";
+	var RusV = "[Р°РµС‘РёРѕСѓС‹СЌСЋСЏeyuioaj]";
+	var RusN = "[Р±РІРіРґР¶Р·РєР»РјРЅРїСЂСЃС‚С„С…С†С‡С€С‰qwrtpsdfghklzxcvbnm]";
+	var RusX = "[Р№СЉСЊ]";
 	var Hyphen = "\xAD";
 
 	var re1 = new RegExp("("+RusX+")("+RusA+RusA+")","ig");
@@ -176,7 +176,7 @@ String.prototype.splitLongWords = function()
 
 
 
-// Определение числительных 1 рубль, 2 рубля, 5 рублей
+// РћРїСЂРµРґРµР»РµРЅРёРµ С‡РёСЃР»РёС‚РµР»СЊРЅС‹С… 1 СЂСѓР±Р»СЊ, 2 СЂСѓР±Р»СЏ, 5 СЂСѓР±Р»РµР№
 Number.prototype.getNoun = function(one, two, five) {
 	var number = Math.abs(this);
 	number %= 100;
@@ -198,20 +198,20 @@ String.prototype.getNoun = function(radix)
 	Number(this, radix || 10).getNoun(arguments);
 };
 
-// Получение параметров из строки запроса
+// РџРѕР»СѓС‡РµРЅРёРµ РїР°СЂР°РјРµС‚СЂРѕРІ РёР· СЃС‚СЂРѕРєРё Р·Р°РїСЂРѕСЃР°
 function getArgs( ) {
 	var args = new Object();
-	var query = location.search.substring(1); // Получить строку запроса
-	var pairs = query.split("&"); // Разбить по амперсандам
+	var query = location.search.substring(1); // РџРѕР»СѓС‡РёС‚СЊ СЃС‚СЂРѕРєСѓ Р·Р°РїСЂРѕСЃР°
+	var pairs = query.split("&"); // Р Р°Р·Р±РёС‚СЊ РїРѕ Р°РјРїРµСЂСЃР°РЅРґР°Рј
 	for(var i = 0; i < pairs.length; i++) {
-		var pos = pairs[i].indexOf('='); // Отыскать пару "name=value"
-		if (pos == -1) continue; // Не найдено - пропустить
-		var argname = pairs[i].substring(0,pos); // Извлечь имя
-		var value = pairs[i].substring(pos+1); // Извлечь значение
-		value = decodeURIComponent(value); // Преобразовать, если нужно
-		args[argname] = value; // Сохранить в виде свойства
+		var pos = pairs[i].indexOf('='); // РћС‚С‹СЃРєР°С‚СЊ РїР°СЂСѓ "name=value"
+		if (pos == -1) continue; // РќРµ РЅР°Р№РґРµРЅРѕ - РїСЂРѕРїСѓСЃС‚РёС‚СЊ
+		var argname = pairs[i].substring(0,pos); // РР·РІР»РµС‡СЊ РёРјСЏ
+		var value = pairs[i].substring(pos+1); // РР·РІР»РµС‡СЊ Р·РЅР°С‡РµРЅРёРµ
+		value = decodeURIComponent(value); // РџСЂРµРѕР±СЂР°Р·РѕРІР°С‚СЊ, РµСЃР»Рё РЅСѓР¶РЅРѕ
+		args[argname] = value; // РЎРѕС…СЂР°РЅРёС‚СЊ РІ РІРёРґРµ СЃРІРѕР№СЃС‚РІР°
 	}
-	return args; // Вернуть объект
+	return args; // Р’РµСЂРЅСѓС‚СЊ РѕР±СЉРµРєС‚
 }
 
 

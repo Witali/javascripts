@@ -1,5 +1,6 @@
-// json-rpc протокол 
-// возможно локальное кэширование перед отправкой на сервер
+// json-rpc РїСЂРѕС‚РѕРєРѕР» 
+// РІРѕР·РјРѕР¶РЅРѕ Р»РѕРєР°Р»СЊРЅРѕРµ РєСЌС€РёСЂРѕРІР°РЅРёРµ РїРµСЂРµРґ РѕС‚РїСЂР°РІРєРѕР№ РЅР° СЃРµСЂРІРµСЂ
+// С‚СЂРµР±СѓРµС‚ jQuery
 
 function ajaxQueue(config)
 {
@@ -9,8 +10,8 @@ function ajaxQueue(config)
  var trStart = config.startId || 0;
  var defTimeout = 2000;
  var storePrefix = config.storePrefix || 'ajax-queue-';
- var transfer = false; // идет ли передача данных, true во время запроса
- var resync = false; // если запрос на синхронизацию пришел во время обмена с сервером
+ var transfer = false; // РёРґРµС‚ Р»Рё РїРµСЂРµРґР°С‡Р° РґР°РЅРЅС‹С…, true РІРѕ РІСЂРµРјСЏ Р·Р°РїСЂРѕСЃР°
+ var resync = false; // РµСЃР»Рё Р·Р°РїСЂРѕСЃ РЅР° СЃРёРЅС…СЂРѕРЅРёР·Р°С†РёСЋ РїСЂРёС€РµР» РІРѕ РІСЂРµРјСЏ РѕР±РјРµРЅР° СЃ СЃРµСЂРІРµСЂРѕРј
  
  
  var store = window.localStorage;
@@ -25,7 +26,7 @@ function ajaxQueue(config)
      
      if(timeout !== false)
      {
-         setTimeout(sync, timeout ? timeout : defTimeout );
+         setTimeout(sync, timeout || defTimeout );
      }
  }
  
@@ -33,11 +34,12 @@ function ajaxQueue(config)
  //
  function onComplete(st, end, reqData, respData)
  {
-     var i=0, n = end-st;
-     trStart = end + 1;
+     var i=0, 
+		n = end-st;
+		trStart = end + 1;
 
 
-    // выполняем коллбэки
+    // РІС‹РїРѕР»РЅСЏРµРј РєРѕР»Р»Р±СЌРєРё
      for(; i < n; ++i)
      {
          var cb = reqData[i].callback;
@@ -47,13 +49,12 @@ function ajaxQueue(config)
             global[cb].apply(global, [respData.toSource()]);
          }
         
-        
-        // удаляем локальные данные
+        // СѓРґР°Р»СЏРµРј Р»РѕРєР°Р»СЊРЅС‹Рµ РґР°РЅРЅС‹Рµ
         delete store[storePrefix + (st+i)];
      }
      
 
-    if(resync) // если был запрос на синхронизацию во время обмена с сервером
+    if(resync) // РµСЃР»Рё Р±С‹Р» Р·Р°РїСЂРѕСЃ РЅР° СЃРёРЅС…СЂРѕРЅРёР·Р°С†РёСЋ РІРѕ РІСЂРµРјСЏ РѕР±РјРµРЅР° СЃ СЃРµСЂРІРµСЂРѕРј
     {
         resync = false;
         sync();
@@ -75,7 +76,7 @@ function ajaxQueue(config)
          var st=trStart,
             i=trStart,
             req,
-            data = [], // данные подготовленные для отправки
+            data = [], // РґР°РЅРЅС‹Рµ РїРѕРґРіРѕС‚РѕРІР»РµРЅРЅС‹Рµ РґР»СЏ РѕС‚РїСЂР°РІРєРё
             localData = [],
             end = transactionId;
             
@@ -99,19 +100,12 @@ function ajaxQueue(config)
              },
              type: 'POST',
              success: function(resp, textStatus, jqXHR){
-                 transfer = false; // передача закончена
+                 transfer = false; // РїРµСЂРµРґР°С‡Р° Р·Р°РєРѕРЅС‡РµРЅР°
                  onComplete(st, end, localData, resp);
              
              }
          });
-         
- 
-         
      }
  }
- 
-
- 
- 
 }
 

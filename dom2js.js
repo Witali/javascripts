@@ -1,7 +1,7 @@
 /*
-	Преобразование Dom-дерева в javascript
+	РџСЂРµРѕР±СЂР°Р·РѕРІР°РЅРёРµ Dom-РґРµСЂРµРІР° РІ javascript
 	
-	на выходе получаем дерево из объектов
+	РЅР° РІС‹С…РѕРґРµ РїРѕР»СѓС‡Р°РµРј РґРµСЂРµРІРѕ РёР· РѕР±СЉРµРєС‚РѕРІ
 	n.t {string} - tag
 	n.a {object} - attributes
 	n.b {array of nodes} - body
@@ -47,7 +47,7 @@ function dom2js(node){
     return el;
 }
 
-// Преобразуем дерево объектов в текст
+// РџСЂРµРѕР±СЂР°Р·СѓРµРј РґРµСЂРµРІРѕ РѕР±СЉРµРєС‚РѕРІ РІ С‚РµРєСЃС‚
 function js2text(node){
 	var tag = node.t || 'div',
 		attrs = node.a,

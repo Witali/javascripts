@@ -1,4 +1,5 @@
-// Основная логика для мастера (назад, вперед, готово)
+// РћСЃРЅРѕРІРЅР°СЏ Р»РѕРіРёРєР° РґР»СЏ РјР°СЃС‚РµСЂР° (РЅР°Р·Р°Рґ, РІРїРµСЂРµРґ, РіРѕС‚РѕРІРѕ)
+// С‚СЂРµР±СѓРµС‚ jQuery
 
 function Wizard(steps)
 {
@@ -10,7 +11,7 @@ Wizard.prototype = {
 		this.steps = options.steps;
 
 		var stepsById = {};
-		var allStepsSelector = []; // строка со всеми id блоков-страниц визарда
+		var allStepsSelector = []; // СЃС‚СЂРѕРєР° СЃРѕ РІСЃРµРјРё id Р±Р»РѕРєРѕРІ-СЃС‚СЂР°РЅРёС† РІРёР·Р°СЂРґР°
 		for (var id, i=0, n=steps.length, step; i<n; i++ )
 		{
 			step = steps[i];
@@ -25,12 +26,12 @@ Wizard.prototype = {
 		this.allStepsSelector = allStepsSelector.join(',');
 		this.currentStepIndex = options.currentStepIndex || 0;
 
-		// Дополнительные данные для хранения между шагами
+		// Р”РѕРїРѕР»РЅРёС‚РµР»СЊРЅС‹Рµ РґР°РЅРЅС‹Рµ РґР»СЏ С…СЂР°РЅРµРЅРёСЏ РјРµР¶РґСѓ С€Р°РіР°РјРё
 		this.data = options.data || {};
 		
 	},
 
-	// Инициализация кнопок
+	// РРЅРёС†РёР°Р»РёР·Р°С†РёСЏ РєРЅРѕРїРѕРє
 	initStepControls: function(index, id){
 		var wiz = this;
 		var nextIndex=index+1, prevIndex=index-1, nextId, prevId;
@@ -78,7 +79,7 @@ Wizard.prototype = {
 			return;
 		}
 		
-		// показываем следующую страницу визарда
+		// РїРѕРєР°Р·С‹РІР°РµРј СЃР»РµРґСѓСЋС‰СѓСЋ СЃС‚СЂР°РЅРёС†Сѓ РІРёР·Р°СЂРґР°
 		wiz.show(wiz.getIdFromIndex(wiz.currentStepIndex+1));
 	}, 
 	
@@ -131,7 +132,6 @@ Wizard.prototype = {
 			return;
 		}
 
-
 		var showed = $('#'+id);
 		$(wiz.allStepsSelector).not(showed).hide();
 		showed.show();
@@ -139,13 +139,13 @@ Wizard.prototype = {
 
 };
 
-// использование
+// РёСЃРїРѕР»СЊР·РѕРІР°РЅРёРµ
 new Wizard({
 	currentStepIndex: 0,
 	
 	steps:[{
 			id: 'step-1',
-			beforeShow: function(){ // если возвращает false, то след действие прерывается
+			beforeShow: function(){ // РµСЃР»Рё РІРѕР·РІСЂР°С‰Р°РµС‚ false, С‚Рѕ СЃР»РµРґ РґРµР№СЃС‚РІРёРµ РїСЂРµСЂС‹РІР°РµС‚СЃСЏ
 
 			},
 			beforeNext: function(data){

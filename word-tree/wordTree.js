@@ -1,4 +1,4 @@
-// Префиксное дерево
+// РџСЂРµС„РёРєСЃРЅРѕРµ РґРµСЂРµРІРѕ
 
 function WordTree()
 {
@@ -8,7 +8,7 @@ function WordTree()
 }
 
 
-// Добавляем слово в дерево
+// Р”РѕР±Р°РІР»СЏРµРј СЃР»РѕРІРѕ РІ РґРµСЂРµРІРѕ
 WordTree.prototype.addWord = function(str){
 	
 	for(var at = this.root, i=0, n=str.length, ch; i<n; ++i)
@@ -28,7 +28,7 @@ WordTree.prototype.addWord = function(str){
 
 };
 
-// Есть ли такое слово в дереве
+// Р•СЃС‚СЊ Р»Рё С‚Р°РєРѕРµ СЃР»РѕРІРѕ РІ РґРµСЂРµРІРµ
 WordTree.prototype.hasWord = function(str){
 	
 	for(var at = this.root, i=0, n=str.length, ch; i<n; ++i)
@@ -53,14 +53,14 @@ WordTree.prototype.hasWord = function(str){
 
 };
 
-// поиск слов вкючающих буквы letters
+// РїРѕРёСЃРє СЃР»РѕРІ РІРєСЋС‡Р°СЋС‰РёС… Р±СѓРєРІС‹ letters
 WordTree.prototype.findWordsByLetters = function(letters){
 
 	var used = {}; 
 	var result = [];
 	var words = [];
 	
-	// индексируем количество вхождений символа
+	// РёРЅРґРµРєСЃРёСЂСѓРµРј РєРѕР»РёС‡РµСЃС‚РІРѕ РІС…РѕР¶РґРµРЅРёР№ СЃРёРјРІРѕР»Р°
 	for ( var i = 0, ch; i < letters.length; ++i )
 	{
 		ch = letters.charAt(i);

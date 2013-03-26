@@ -1,12 +1,12 @@
-// менеджер событий
-// позволяет добавлять события и их обработчики объектам
+// РјРµРЅРµРґР¶РµСЂ СЃРѕР±С‹С‚РёР№
+// РїРѕР·РІРѕР»СЏРµС‚ РґРѕР±Р°РІР»СЏС‚СЊ СЃРѕР±С‹С‚РёСЏ Рё РёС… РѕР±СЂР°Р±РѕС‚С‡РёРєРё РѕР±СЉРµРєС‚Р°Рј
 
 var EventManager = function(){
 	
 
 };
 
-// назначаем обработчик события объекту
+// РЅР°Р·РЅР°С‡Р°РµРј РѕР±СЂР°Р±РѕС‚С‡РёРє СЃРѕР±С‹С‚РёСЏ РѕР±СЉРµРєС‚Сѓ
 EventManager.prototype.on = function(obj, eventName, handler){
 	if(!obj.on) {
 		obj.on = {};
@@ -19,7 +19,7 @@ EventManager.prototype.on = function(obj, eventName, handler){
 	obj.on[eventName].push(handler);
 };
 
-// удаляем обработчик
+// СѓРґР°Р»СЏРµРј РѕР±СЂР°Р±РѕС‚С‡РёРє
 EventManager.prototype.un = function(obj, eventName, handler){
 	if(!obj.on || !obj.on[eventName]) {
 		return;
@@ -31,7 +31,7 @@ EventManager.prototype.un = function(obj, eventName, handler){
 	}
 };
 
-// Вызываем обработчик
+// Р’С‹Р·С‹РІР°РµРј РѕР±СЂР°Р±РѕС‚С‡РёРє
 EventManager.prototype.trigger = function(obj, eventName, args) {
 	if(!obj.on || !obj.on[eventName]) {
 		return;
