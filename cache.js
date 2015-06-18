@@ -8,6 +8,11 @@ function getTime() {
 }
 
 function getValue(name) {
+    if(!(name in cacheIdx))
+    {
+        return null;
+    }
+    
     var data = cache[cacheIdx[name]];
     data.reads++;
     return data.value;
@@ -83,9 +88,16 @@ function addNewValue() {
            
         }, 200);
     } else {
+
+        for(i=0; i<10; i++)
+        {
+            getValue('karramba13');
+        }       
+        
         console.log(cache);
     }
 } 
+
 
 addNewValue();
 
