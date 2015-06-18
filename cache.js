@@ -1,3 +1,4 @@
+
 var cacheMaxSize = 10;
 var cacheSize = 0;
 var cache = [];
@@ -78,28 +79,39 @@ setValue('karramba', 123);
 
 
 var i = 0;
-
-function addNewValue() {
+var n = 20
+function addNewValue(callback) {
     setValue('karramba' + i, i);   
     i++;
-    if(i<20) {
+    if(i<n) {
         setTimeout(function() {
-            addNewValue();
+            addNewValue(callback);
            
-        }, 200);
+        }, 10);
     } else {
 
-        for(i=0; i<10; i++)
-        {
-            getValue('karramba13');
-        }       
-        
-        console.log(cache);
+        if(callback) callback();
     }
 } 
 
 
-addNewValue();
+addNewValue(function() {
+    for(i=0; i<10; i++)
+    {
+        getValue('karramba13');
+    }       
+    
+    console.log(cache);
+    
+    i=30;
+    n=50;
+    addNewValue(function() {
+        console.log(cache);
+    });
+    
+});
+
+
 
 
 
