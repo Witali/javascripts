@@ -12,7 +12,7 @@
 */
 
 // разбивает строку на группы букв и цифр, например 'abc100' -> ['abc', 100]
-function preapareString(str){
+function prepareString(str){
 
 	var patt1=/(\d+)|(\D+)/gi;
 
